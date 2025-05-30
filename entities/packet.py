@@ -1,5 +1,7 @@
 from utils import config
+import numpy as np
 
+rng = np.random.default_rng()
 
 class Packet:
     """
@@ -93,6 +95,32 @@ class DataPacket(Packet):
         Here, you will add the attributes for the data packets mentioned in the assignment,
         such as priority, category, processing time etc... using the probability distributions mentioned
         """
+        # Assign category with categorical distribution
+        categories = ["text", "image", "video"]
+        category_probs = [0.6, 0.3, 0.1]
+        #self.category = np.random.Generator.choice(categories, p=category_probs)
+        self.category = rng.choice(categories, p=category_probs)
+
+        # Assign packet size (MB) based on category
+        if self.category == "text":
+            self.packet_size = np.random.uniform(0.1, 1)  # small files
+        elif self.category == "image":
+            self.packet_size = np.random.uniform(1, 5)  # medium files
+        else:
+            self.packet_size = np.random.uniform(5, 20)  # large files
+
+        # Assign priority
+        priorities = ["high", "medium", "low"]
+        priority_probs = [0.2, 0.3, 0.5]
+        #self.priority = np.random.Generator.choice(priorities, p=priority_probs)
+        self.priority = rng.choice(priorities, p=priority_probs)
+
+        # Assign processing time (service time) based on exponential distribution
+        #μ = simulator.service_rate  # e.g., packets/sec #wrong code
+        #self.processing_time = np.random.exponential(1 / μ) #wrong code
+
+        # Convert MB to length in bits or bytes (e.g., bytes = MB * 1e6)
+        #data_packet_length = int(self.packet_size * 1e6) #code wrong
 
 
 class AckPacket(Packet):

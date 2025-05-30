@@ -1,5 +1,5 @@
 <div align="center">
-<img src="https://github.com/ZihaoZhouSCUT/Simulation-Platform-for-UAV-network/blob/master/img/logo.png" width="200px">
+<img src="/img/logo.png" width="200px">
 </div>
 
 <div align="center">
@@ -14,7 +14,7 @@
 
 This Python-based simulation platform can realistically model various components of the UAV network, including the network layer, MAC layer and physical layer, as well as the UAV mobility model, energy model, etc. In addition, the platform can be easily extended to meet the needs of different users and develop their own protocols.
 
-## Requiremens
+## Requirements
 - Python >= 3.3 
 - Simpy >= 4.1.1
   
@@ -27,7 +27,7 @@ You can even ```run main.py``` directly with one click to get a sneak peek. But 
 
 ## Project structure
 <div align="center">
-<img src="https://github.com/ZihaoZhouSCUT/Simulation-Platform-for-UAV-network/blob/master/img/structure.png" width="800px">
+<img src="/img/structure.png" width="800px">
 </div>
 
 ## Core logic
@@ -38,7 +38,7 @@ After the packet is read, a packet type determination will be performed first. I
 When packet gets the buffer resource, MAC protocol will be performed to access the wireless channel. When the packet is successfully received by the next hop, packet type determination needs to be performed. For example, if the received packet is data packet, an ACK packet is needed to reply after SIFS. In addition, if the receiver is the destination of the incoming data packet, some metrics will be recorded (PDR, end-to-end delay, etc.), otherwise, it means that this data packet needs to be further relayed so it will be put into the "transmitting_queue" of the receiver drone.
 
 <div align="center">
-<img src="https://github.com/ZihaoZhouSCUT/Simulation-Platform-for-UAV-network/blob/master/img/transmitting_procedure.png" width="800px">
+<img src="/img/transmitting_procedure.png" width="800px">
 </div>
 
 ## Module overview
@@ -46,7 +46,7 @@ When packet gets the buffer resource, MAC protocol will be performed to access t
 In this project, **Greedy Perimeter Stateless Routing (GPSR)**, **Gradient Routing (GRAd)**, **Destination-Sequenced Distance Vector routing (DSDV)** and some **Reinforcement-Learning based Routing Protocol** have been implemented. The following figure illustrates the routing procedure of GRAd and GPSR. More detail information can be found in the corresponding papers.
 
 <div align="center">
-<img src="https://github.com/ZihaoZhouSCUT/Simulation-Platform-for-UAV-network/blob/master/img/routing.png" width="800px">
+<img src="/img/routing.png" width="800px">
 </div>
 
 ### Media access control (MAC) protocol
@@ -58,7 +58,7 @@ In this project, **Carrier-sense multiple access with collision avoidance (CSMA/
 4. if the countdown is interrupted, it means that the drone loses the game. The drone then freeze the timer and wait for channel idle again before re-starting its timer
 
 <div align="center">
-<img src="https://github.com/ZihaoZhouSCUT/Simulation-Platform-for-UAV-network/blob/master/img/csmaca.png" width="800px">
+<img src="/img/csmaca.png" width="800px">
 </div>
 
 The following figure demonstrates the packets transmission flow when pure aloha is adopted. When a drone installed a pure aloha protocol wants to transmit packet:
@@ -69,36 +69,36 @@ The following figure demonstrates the packets transmission flow when pure aloha 
 4. if not, the node will wait a random amount of time, according to the number of re-transmissions attempts, and then sends packet again
 
 <div align="center">
-<img src="https://github.com/ZihaoZhouSCUT/Simulation-Platform-for-UAV-network/blob/master/img/pure_aloha.png" width="800px">
+<img src="/img/pure_aloha.png" width="800px">
 </div>
 
-From the above illustration we can see that, it is not only two drones sending packets at the same time that cause packet collisions. If there is an overlap in the transmission time of two data packets, it means that collision occurrs. So in our project, each drone checks its inbox every very short interval and has several important things to do (as shown in the following figure):
+From the above illustration we can see that, it is not only two drones sending packets at the same time that cause packet collisions. If there is an overlap in the transmission time of two data packets, it means that collision occurs. So in our project, each drone checks its inbox every very short interval and has several important things to do (as shown in the following figure):
 
 1. delete the packet records in its inbox whose distance from the current time is greater than twice the maximum packet transmission delay. This reduces computational overhead because these packets are guaranteed to have already been processed and will not interfere with packets that have not yet been processed
 2. check the packet records in the inbox to see which packet has been transmitted in its entirety
 3. if there is such a record, then find other packets that overlap with this packet in transmission time in the inbox records of all drones, and use them to calculate SINR.
 
 <div align="center">
-<img src="https://github.com/ZihaoZhouSCUT/Simulation-Platform-for-UAV-network/blob/master/img/reception_logic.png" width="800px">
+<img src="/img/reception_logic.png" width="800px">
 </div>
 
 ### Mobility model
 Mobility model is one of the most important mudules to show the characteristics of UAV network more realistically. In this project, **Gauss-Markov 3D mobility model**, **Random Walk 3D mobility model** and **Random Waypoint 3D mobility model** have been implemented. Specifically, since it is quite difficult to achieve continuous movement of drone in discrete time simulation, we set a "position_update_interval" to update the positions of drones periodically, that is, it is assumed that the drone moves continuously within this time interval. If the time interval "position_update_interval" is smaller, the simulation accuracy will be higher, but the corresponding simulation time will be longer. There will be a trade-off. Besides, the time interval that drone updates its direction can also be set manually. The trajectories of a single drone within 100 second of the simulation under the two mobility models are shown as follows:
 
 <div align="center">
-<img src="https://github.com/ZihaoZhouSCUT/Simulation-Platform-for-UAV-network/blob/master/img/mobility_model.png" width="800px">
+<img src="/img/mobility_model.png" width="800px">
 </div>
 
 ### Motion control module
 
 <div align="center">
-<img src="https://github.com/ZihaoZhouSCUT/Simulation-Platform-for-UAV-network/blob/master/img/motion_control.png" width="800px">
+<img src="/img/motion_control.png" width="800px">
 </div>
 
 ### Energy model
 The energy model of our platform is based on the work of Y. Zeng, et al. The figure below shows the power required for different drone flying speeds. The energy consumption is equal to the power multiplied by the flight time at this speed.
 <div align="center">
-<img src="https://github.com/ZihaoZhouSCUT/Simulation-Platform-for-UAV-network/blob/master/img/energy_model.png" width="400px">
+<img src="/img/energy_model.png" width="400px">
 </div>
 
 ## Performance evaluation
@@ -111,7 +111,7 @@ Our "FlyNet" platform supports the evaluation of several performance metrics, as
 - **Hop Count**: Hop count is the number of router output ports through which the packet should pass.
 
 ## Design your own protocol
-Our simulation platform can be expanded based on your research needs, including designing your own mobility model of drones (in ```mobility``` folder), mac protocol (in ```mac``` floder), routing protocol (in ```routing``` floder) and so on. Next, we take routing protocols as an example to introduce how users can design their own algorithms.
+Our simulation platform can be expanded based on your research needs, including designing your own mobility model of drones (in ```mobility``` folder), mac protocol (in ```mac``` folder), routing protocol (in ```routing``` folder) and so on. Next, we take routing protocols as an example to introduce how users can design their own algorithms.
 
  * Create a new package under the ```routing``` folder (Don't forget to add ```__init__.py```)
  * The main program of the routing protocol must contain the function: ```def next_hop_selection(self, packet)``` and ```def packet_reception(self, packet, src_drone_id)```

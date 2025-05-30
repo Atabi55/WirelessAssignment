@@ -35,7 +35,7 @@ entities
   packet.py-> Packet implementation. Here, you will extend the attributes for the packets and generate them based on
                       the probability distributions mentioned in the assignment.
 mac
-  csma_ca.py-> An implmentation of CSMA/CA. Generally, no changes should be needed here, but that is up to your implementation.
+  csma_ca.py-> An implementation of CSMA/CA. Generally, no changes should be needed here, but that is up to your implementation.
   pure_aloha.py-> An implementation of pure ALOHA. We advise you to you CSMA/CA, but you could use both and compare between the results.
 
 mobility
@@ -43,7 +43,7 @@ mobility
                                 More details are found in the file. You can use it in your simulation.
   random_walk_3d.py-> A random memoryless mobility model. Future steps are independent of previous ones, and are totally random.
   random_waypoint.py-> A drone visits a set of generate way-points will pausing at every point for a while. If waypoint finish
-                       before the simulaiton finishes, drone stops at the last waypoint.
+                       before the simulation finishes, drone stops at the last waypoint.
 
 phy
   channel.py-> channel formation (no changes are needed here).
@@ -76,7 +76,7 @@ utils
 
 Some notes:
 
-* Download the related libaries to be able to run the code (SimPy, Numpy, matplotlib, scipy, seaborn, ...).
+* Download the related libraries to be able to run the code (SimPy, Numpy, matplotlib, scipy, seaborn, ...).
 * The main processes in the simulation are logged in the running_log.log file. You can check the file while/after the simulation runs.
 * Try to include as much print and log statements as you can in your implementation to track the simulation progress, and to check
   if you are working correctly. Once sure if your implementation , you can keep the important print and log statements.
