@@ -116,11 +116,8 @@ class DataPacket(Packet):
         self.priority = rng.choice(priorities, p=priority_probs)
 
         # Assign processing time (service time) based on exponential distribution
-        #μ = simulator.service_rate  # e.g., packets/sec #wrong code
-        #self.processing_time = np.random.exponential(1 / μ) #wrong code
+        self.processing_time = np.random.exponential(1 / config.MU)
 
-        # Convert MB to length in bits or bytes (e.g., bytes = MB * 1e6)
-        #data_packet_length = int(self.packet_size * 1e6) #code wrong
 
 
 class AckPacket(Packet):

@@ -153,6 +153,10 @@ class Node:
             self.residual_energy = config.INITIAL_ENERGY
             self.sleep = False
 
+            # assignment addition: processing capacity of UAV (MB/s)
+            # only available for drones, not sensors
+            self.processing_capacity = np.random.uniform(0.5 * (1/config.MU), 1.5 * (1/config.MU))
+
             self.env.process(self.feed_packet())
             self.env.process(self.energy_monitor())
             self.env.process(self.receive())
@@ -181,7 +185,7 @@ class Node:
                     interval of data packets follows exponential distribution
                     """
 
-                    rate = 2  # on average, how many packets are generated in 1s
+                    rate = config.LAMBDA  # on average, how many packets are generated in 1s
                     yield self.env.timeout(round(random.expovariate(rate) * 1e6))
 
                 GLOBAL_DATA_PACKET_ID += 1  # data packet id

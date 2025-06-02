@@ -4,8 +4,8 @@ from utils.ieee_802_11 import IEEE_802_11
 IEEE_802_11 = IEEE_802_11().b #You can choose a different version or leave it as it is.
 
 # --------------------- additional parameters --------------------- #
-LAMBDA = 1.2 #packet arrival rate
-MU = 1.8 #service rate
+LAMBDA = 2 #packet arrival rate (per second)
+MU = 2.3 #service rate (per second)
 
 
 # --------------------- simulation parameters --------------------- #
